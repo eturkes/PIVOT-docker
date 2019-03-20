@@ -17,37 +17,11 @@
 
 FROM rocker/verse:3.5.3
 
-COPY install.R /tmp/
+COPY R /R
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        sudo \
-        gdebi-core \
-        pandoc \
-        pandoc-citeproc \
-        libcurl4-gnutls-dev \
-        libcairo2-dev \
-        libxt-dev \
-        wget \
-    && wget --no-verbose https://download3.rstudio.org/ubuntu-14.04/x86_64/VERSION -O "version.txt" \
-    && VERSION=$(cat version.txt) \
-    && wget --no-verbose "https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-$VERSION-amd64.deb" -O ss-latest.deb \
-    && gdebi -n ss-latest.deb \
-    && rm -f version.txt ss-latest.deb \
-    && . /etc/environment \
-    && R -e "install.packages(c('shiny', 'rmarkdown'), repos='$MRAN')" \
-    && cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/ \
-    && R -f /tmp/install.R \
-    && apt-get clean \
-    && rm -Rf /var/lib/apt/lists/ \
-        /tmp/downloaded_packages/ \
+RUN R -f /R/install.R \
+    && rm -Rf /tmp/downloaded_packages/ \
         /tmp/*.rds \
-        /tmp/install.R
+        /R/install.R
 
-COPY shiny-server.conf  /etc/shiny-server/
-COPY PIVOT/inst/app/ /srv/shiny-server/
-COPY shiny-server.sh /usr/bin/
-
-EXPOSE 80
-
-CMD ["/usr/bin/shiny-server.sh"]
+COPY R/start2.R /R

@@ -15,26 +15,10 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-# Define the user we should use when spawning R Shiny processes
-run_as shiny;
+library("PIVOT")
 
-# Define a top-level server which will listen on a port
-server {
-  # Instruct this server to listen on port 80. The app at dokku-alt need expose PORT 80, or 500 e etc. See the docs
-  listen 80;
-
-  # Define the location available at the base URL
-  location / {
-
-    # Run this location in 'site_dir' mode, which hosts the entire directory
-    # tree at '/srv/shiny-server'
-    site_dir /srv/shiny-server;
-    
-    # Define where we should put the log files for this location
-    log_dir /var/log/shiny-server;
-    
-    # Should we list the contents of a (non-Shiny-App) directory when the user 
-    # visits the corresponding URL?
-    directory_index on;
-  }
-}
+Sys.setenv("R_MAX_NUM_DLLS"=180)
+cat("Gnomovision version 69, Copyright (c) 2015-2018 Qin Zhu and Junhyong Kim, University of Pennsylvania.
+Gnomovision comes with ABSOLUTELY NO WARRANTY; for details go to https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html.
+This is free software, and you are welcome to redistribute it under certain conditions.")
+shiny::runApp(system.file("app", package='PIVOT'), options(shiny.port = 3838))
