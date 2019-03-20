@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # PIVOT-docker - Docker container for the PIVOT transcriptomics platform
 # Copyright (C) 2019  Emir Turkes
 # 
@@ -15,15 +17,8 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-.git
-COPYING
-README.md
-PIVOT/inst/CITATION.txt
-PIVOT/man
-PIVOT/R
-PIVOT/vignettes
-PIVOT/DESCRIPTION
-PIVOT/gpl-2.0.txt
-PIVOT/NAMESPACE
-PIVOT/PIVOT.analysis.Rproj
-PIVOT/README.md
+# Make sure the directory for individual app logs exists
+mkdir -p /var/log/shiny-server
+chown shiny.shiny /var/log/shiny-server
+
+exec shiny-server >> /var/log/shiny-server.log 2>&1
