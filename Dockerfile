@@ -34,7 +34,11 @@ RUN apt-get update && apt-get install -y \
     . /etc/environment && \
     R -e "install.packages(c('shiny', 'rmarkdown'), repos='$MRAN')" && \
     cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/ && \
-    R -e "BiocManager::install(c('GO.db, 'HSMMSingleCell', 'org.Mm.eg.db', 'org.Hs.eg.db', 'DESeq2', 'SingleCellExperiment', 'scater', 'monocle', 'GenomeInfoDb'))"
+    R -e "BiocManager::install(c('GO.db, 'HSMMSingleCell', 'org.Mm.eg.db', 'org.Hs.eg.db', 'DESeq2', 'SingleCellExperiment', 'scater', 'monocle', 'GenomeInfoDb'))" && \
+    apt-get clean && \
+    rm -Rf /var/lib/apt/lists/ \
+        /tmp/downloaded_packages/ \
+        /tmp/*.rds
 
 COPY shiny-server.conf  /etc/shiny-server/shiny-server.conf
 COPY PIVOT/inst/app /srv/shiny-server
