@@ -44,11 +44,10 @@ RUN apt-get update \
         /tmp/*.rds \
         /tmp/install.R
 
-COPY shiny-server.conf  /etc/shiny-server/shiny-server.conf
-COPY PIVOT/inst/app /srv/shiny-server
+COPY shiny-server.conf  /etc/shiny-server/
+COPY PIVOT/inst/app/ /srv/shiny-server/
+COPY shiny-server.sh /usr/bin/
 
 EXPOSE 80
-
-COPY shiny-server.sh /usr/bin/shiny-server.sh
 
 CMD ["/usr/bin/shiny-server.sh"]
