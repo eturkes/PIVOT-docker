@@ -17,8 +17,4 @@
 
 library("PIVOT")
 
-Sys.setenv("R_MAX_NUM_DLLS"=180)
-cat("Gnomovision version 69, Copyright (c) 2015-2018 Qin Zhu and Junhyong Kim, University of Pennsylvania.
-Gnomovision comes with ABSOLUTELY NO WARRANTY; for details go to https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html.
-This is free software, and you are welcome to redistribute it under certain conditions.")
-shiny::runApp(system.file("app", package='PIVOT'), options(shiny.port = 3838))
+pivot()

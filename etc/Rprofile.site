@@ -15,13 +15,4 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-FROM rocker/verse:3.5.3
-
-LABEL maintainer="Emir Turkes eturkes@bu.edu"
-
-COPY etc /usr/local/lib/R/etc/
-
-RUN ln -s /usr/local/lib/R/etc/start.R \
-    && R -f /usr/local/lib/R/etc/install.R \
-    && rm -Rf /tmp/downloaded_packages/ \
-        /tmp/*.rds
+local({options(shiny.port = 3838, shiny.host = "0.0.0.0")})
