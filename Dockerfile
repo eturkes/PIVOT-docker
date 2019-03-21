@@ -21,7 +21,8 @@ LABEL maintainer="Emir Turkes eturkes@bu.edu"
 
 COPY etc /usr/local/lib/R/etc/
 
-RUN ln -s /usr/local/lib/R/etc/start.R \
-    && R -f /usr/local/lib/R/etc/install.R \
+RUN R -f /usr/local/lib/R/etc/install.R \
     && rm -Rf /tmp/downloaded_packages/ \
         /tmp/*.rds
+
+CMD ["R", "-f", "/usr/local/lib/R/etc/start.R"]
