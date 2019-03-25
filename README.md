@@ -18,7 +18,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
 
 # PIVOT-docker
-#### *This project is generally feature complete.*
+#### *This project is generally feature complete*
 
 Community-developed Docker container for the [PIVOT transcriptomics platform](https://github.com/qinzhu/PIVOT).  
 Please see the PIVOT README for instructions on how to run.  
