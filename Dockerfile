@@ -21,7 +21,10 @@ LABEL maintainer="Emir Turkes eturkes@bu.edu"
 
 COPY etc /usr/local/lib/R/etc/
 
-RUN R -f /usr/local/lib/R/etc/install.R \
+RUN echo "echo 'PIVOT is ready, please visit localhost in your web browser. When you are finished, enter Ctrl+C in this terminal to close PIVOT.'" \
+        > /usr/bin/xdg-open \
+    && chmod +x /usr/bin/xdg-open \
+    && R -f /usr/local/lib/R/etc/install.R \
     && rm -Rf /tmp/downloaded_packages/ \
         /tmp/*.rds
 
