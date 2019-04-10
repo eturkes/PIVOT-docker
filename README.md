@@ -1,5 +1,5 @@
 <!---
-PIVOT-docker - Community-developed Docker container for PIVOT transcriptomics
+pivot-docker - Community-developed Docker container for PIVOT transcriptomics
 Copyright (C) 2019  Emir Turkes
 
 This program is free software; you can redistribute it and/or
@@ -17,7 +17,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
 
-# PIVOT-docker
+# PIVOT Docker
 #### *This project is generally feature complete*
 
 Community-developed Docker container for the [PIVOT transcriptomics platform](https://github.com/qinzhu/PIVOT).  
