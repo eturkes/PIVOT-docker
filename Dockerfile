@@ -17,7 +17,7 @@
 
 FROM rocker/verse:3.5.3
 
-LABEL maintainer="Emir Turkes eturkes@bu.edu"
+LABEL maintainer="Emir Turkes emir.turkes@eturkes.com"
 
 COPY etc /usr/local/lib/R/etc/
 
