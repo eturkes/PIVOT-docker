@@ -15,7 +15,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-FROM rocker/verse:3.6.1
+FROM rocker/verse:3.6.2
 
 LABEL maintainer="Emir Turkes emir.turkes@eturkes.com"
 
